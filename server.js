@@ -26,12 +26,23 @@ app.get('/read/:id', (req, res) => {
     const sql = "SELECT * FROM StudentList WHERE ID = ?"
         
    const id = req.params.id;
-    console.log("the id is =======================>"+req.params.id)
     db.query(sql, [id], (err,result) => {
         if (err) return res.json(err);
         return res.json(result);
     })
 })
+
+
+app.put('/edit/:id', (req, res) => {
+const sql = "UPDATE StudentList SET `Name` = ?, `Email` = ? WHERE `ID` = ?"
+
+
+db.query(sql, [req.body.name, req.body.email, req.params.id], (err, result) => {
+    if (err) return res.json(err);
+    return res.json(result);
+})
+})
+
 
 app.post('/student',(req, res) => {
     const sql = "INSERT INTO StudentList (Name, Email) VALUES (?)"
