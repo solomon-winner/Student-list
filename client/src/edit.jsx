@@ -19,11 +19,11 @@ const Edit = () => {
         console.log("..................u")    
     })
         .catch(err => console.log(err));
-    })
+    },[id])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8081/edit", values)
+        axios.put("http://localhost:8081/edit/" + id, values)
         .then(res => {console.log("success full")
         console.log(res);
     navigate('/');
