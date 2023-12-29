@@ -43,7 +43,7 @@ const Edit = () => {
                     placeholder="Enter Name" 
                     className="form-control"
                     value ={info.Name}
-                    onChange = {e => setValues({...values, name: e.target.value})}/>
+                    onChange = {e => setValues({...values, name: e.target.value})} contentEditable/>
                 </div>
                 <div className="mb-2">
                     <label htmlFor="">Email</label>
