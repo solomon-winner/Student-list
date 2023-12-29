@@ -6,7 +6,8 @@ const Home = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
         axios.get('http://localhost:8081/')
-        .then(res => setData(res.data))
+        .then(res => {setData(res.data)
+            })
         .catch(err => console.log(err));
         
     }, [])
@@ -37,7 +38,7 @@ return (
                             <td>{student.Email}</td>
                             <td>
                                 <Link to = {`read/${student.ID}`} className='btn btn-sm btn-info'>Read</Link>
-                                <Link to = {`/edit${student.ID}`} className='btn btn-sm btn-primary mx-2'>Edit</Link>
+                                <Link to = {`/edit/${student.ID}`} className='btn btn-sm btn-primary mx-2'>Edit</Link>
                                 <button className='btn btn-sm btn-danger'>Delete</button>
                             </td>
                         </tr>)
