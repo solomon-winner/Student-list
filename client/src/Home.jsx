@@ -11,6 +11,12 @@ const Home = () => {
         .catch(err => console.log(err));
         
     }, [])
+    const handelDelete = (id) => {
+        axios.delete('http://localhost:8081/delete/' + id)
+        .then( res => {
+            window.location.reload()})
+        .catch(err => console.log(err))
+    }
 return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
         <div className="w-50 bg-white rounded p-3">
@@ -39,7 +45,7 @@ return (
                             <td>
                                 <Link to = {`read/${student.ID}`} className='btn btn-sm btn-info'>Read</Link>
                                 <Link to = {`/edit/${student.ID}`} className='btn btn-sm btn-primary mx-2'>Edit</Link>
-                                <button className='btn btn-sm btn-danger'>Delete</button>
+                                <button onClick = {() => handelDelete(student.ID)} className='btn btn-sm btn-danger'>Delete</button>
                             </td>
                         </tr>)
                     })
