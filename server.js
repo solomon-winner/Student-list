@@ -43,6 +43,13 @@ db.query(sql, [req.body.name, req.body.email, req.params.id], (err, result) => {
 })
 })
 
+app.delete('/delete/:id', (req, res) => {
+    const sql ="DELETE FROM StudentList WHERE ID = ?"
+    db.query(sql, [req.params.id],(err, result) => {
+        if (err) return res.json(res);
+        return res.json(result);
+    })
+})
 
 app.post('/student',(req, res) => {
     const sql = "INSERT INTO StudentList (Name, Email) VALUES (?)"
